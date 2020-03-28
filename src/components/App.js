@@ -1,15 +1,12 @@
 import React from "react";
-import Authorization from "../apis/Authorization";
+import Login from "./Login/Login";
+
+import "./App.scss";
 
 const App = () => {
-  const Auth = () => {
-    console.log("hello");
-    Authorization();
-  };
-
   return (
     <div className="app">
-      <a href={Authorization}>HELLO</a>
+      <Login />
     </div>
   );
 };
