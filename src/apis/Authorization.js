@@ -11,6 +11,6 @@ import { config } from "../config";
 
 const AUTH = `https://accounts.spotify.com/authorize?client_id=${config.CLIENT_ID}&redirect_uri=${
   config.AUTH_REDIRECT_URI
-}&scope=${config.SCOPES.join("%20")}&response_type=token&state=6969`;
+}&scope=${config.SCOPES.join("%20")}&response_type=token&state=6969&show_dialog=true`;
 
 export default AUTH;
