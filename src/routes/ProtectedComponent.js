@@ -1,10 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import { Route, Redirect } from "react-router-dom";
 import context from "../context/TokenContext";
+import useCheckTokenCookie from "../hooks/useCheckTokenCookie";
 
 export const ProtectedComponent = ({ component: Component, ...rest }) => {
   const TokenContext = useContext(context);
+  const cookie = useCheckTokenCookie();
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    TokenContext.setToken(cookie);
+  }, [cookie]);
 
   return (
     <Route

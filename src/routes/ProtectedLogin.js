@@ -5,6 +5,7 @@ import context from "../context/TokenContext";
 
 export const ProtectedLogin = ({ component: Component, ...rest }) => {
   const TokenContext = useContext(context);
+
   return (
     <Route
       {...rest}

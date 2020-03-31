@@ -19,11 +19,11 @@ window.location.hash = "";
 const LoginContainer = (props) => {
   const TokenContext = useContext(context);
   console.log(hash.access_token);
+
   if (hash.access_token) {
     Cookies.set("token", hash.access_token, { expires: 1 / 48 });
     TokenContext.setToken(hash.access_token);
     hash = {};
-    window.location.reload();
   }
   return <Login />;
 };

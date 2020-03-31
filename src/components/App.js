@@ -30,6 +30,13 @@ const App = () => {
 };
 
 const Hello = () => {
+  // const mycontext = useContext(context);
+  // const cookie = useCheckTokenCookie();
+
+  // useEffect(() => {
+  //   mycontext.setToken(cookie);
+  // }, [cookie]);
+
   return (
     <div>
       <button>Hello</button>
