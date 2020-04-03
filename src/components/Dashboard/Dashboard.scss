@@ -1,0 +1,165 @@
+.dashboard {
+  @import url("https://fonts.googleapis.com/css?family=Baloo+2:400,500,700|Lato:300,400|Montserrat:400,500&display=swap");
+
+  height: 100%;
+  width: 100%;
+  background: #62026d;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: 5rem;
+  position: relative;
+
+  @media only screen and (min-width: 600px) {
+    font-size: 1rem;
+  }
+}
+
+.navbar {
+  width: 100%;
+  height: 9.5rem;
+  background: #300036;
+
+  // display: flex;
+  position: relative;
+  border-radius: 0 0 2rem 2rem;
+
+  &__option {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 300;
+    &:not(:last-child) > div::after {
+      content: "";
+      width: 1px;
+      height: 3rem;
+      display: block;
+      background: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__text {
+    display: inline-block;
+    width: 10rem;
+    text-align: center;
+  }
+}
+
+.content {
+  height: 100%;
+  width: 100%;
+
+  &__list {
+    height: 100%;
+    width: 100%;
+    padding: 3rem 1rem 5rem 1rem;
+    display: grid;
+    grid-template-rows: repeat(10, 1fr);
+    // grid-template-columns: [full-start] [number-start]15%[number-end] [main-start]1fr[main-end] [redirect-start]10%[redirect-end][full-end];
+    // grid-template-columns: 15% 1fr 10%;
+    grid-gap: 2rem;
+  }
+
+  &__row {
+    // grid-column: full-start/ full-end;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+
+  //number
+  &__number {
+    // grid-column: number-start / number-end;
+    width: 15%;
+    height: 100%;
+    font-family: "Baloo 2", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background: #300036;
+    border-radius: 2rem 0 0 2rem;
+    border-right: 1px solid #62026d;
+  }
+
+  //main
+  &__main {
+    background: #300036;
+
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+  &__img {
+    height: 100%;
+    width: 20%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+
+  &__details {
+    width: 80%;
+    height: 100%;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  //spotify redirect
+  &__spotify-redirect {
+    width: 10%;
+    height: 100%;
+    background: #300036;
+    border-radius: 0 2rem 2rem 0;
+    border-left: 1px solid #62026d;
+  }
+}
+
+.timeperiod {
+  background: #300036; //
+  width: 100%;
+  height: 9rem;
+  border-radius: 2rem 2rem;
+  font-size: 3rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  &__title {
+    position: absolute;
+    top: -2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    font-weight: 300;
+  }
+
+  &__option {
+    padding-right: 2rem;
+    padding-left: 2rem;
+    &--active {
+      background: #670073;
+      border-radius: 1rem;
+    }
+  }
+}

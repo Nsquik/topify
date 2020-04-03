@@ -16,6 +16,12 @@ let hash = window.location.hash
 
 window.location.hash = "";
 
+const queryString = window.location.search;
+
+const urlParams = new URLSearchParams(queryString);
+
+const error = urlParams.get("error");
+
 const LoginContainer = (props) => {
   const TokenContext = useContext(context);
   console.log(hash.access_token);
@@ -25,7 +31,9 @@ const LoginContainer = (props) => {
     TokenContext.setToken(hash.access_token);
     hash = {};
   }
-  return <Login />;
+  window.history.replaceState({}, document.title, "/");
+
+  return <Login error={error} />;
 };
 
 export default LoginContainer;

@@ -1,0 +1,22 @@
+.header {
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    @media only screen and (max-width: 600px) {
+      display: none;
+    }
+    &-icon {
+      padding-right: 3rem;
+    }
+    &-text {
+      color: #7c7b90;
+      font-weight: 400;
+      font-size: 2rem;
+
+      @media only screen and (max-width: 900px) {
+        display: none;
+      }
+    }
+  }
+}

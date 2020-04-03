@@ -1,8 +1,9 @@
 import React from "react";
-import Login from "./Login/LoginContainer";
 import { Router, Switch, Route, Redirect } from "react-router-dom";
 
 import { TokenContext } from "../context/TokenContext";
+import Login from "./Login/LoginContainer";
+import Dashboard from "./NewDashboard/NewDashboard";
 
 import { ProtectedLogin } from "../routes/ProtectedLogin";
 import { ProtectedComponent } from "../routes/ProtectedComponent";
@@ -16,7 +17,7 @@ const App = () => {
       <div className="app">
         <Router history={history}>
           <Switch>
-            <ProtectedComponent exact path="/" component={Hello} />
+            <ProtectedComponent exact path="/" component={Dashboard} />
             <ProtectedLogin path="/login" component={Login} />
             <Route>
               {/* This happens when URL is not found */}

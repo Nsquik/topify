@@ -1,0 +1,25 @@
+.header {
+  font-size: 1.4rem;
+  box-sizing: border-box;
+  font-family: "Overpass", sans-serif;
+  color: white;
+  // width: 100vw;
+  //size
+  height: 7rem;
+  //colors
+  background-color: var(--color-primary);
+  //....
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media only screen and (max-width: 850px) {
+    align-content: space-around;
+    height: 11rem;
+    flex-wrap: wrap;
+  }
+
+  @media only screen and (max-width: 600px) {
+    justify-content: flex-end;
+  }
+}
