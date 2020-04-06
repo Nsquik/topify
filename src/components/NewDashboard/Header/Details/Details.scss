@@ -33,7 +33,7 @@
 
   &__logout {
     background-color: #8d65ea;
-    padding: 1rem;
+    padding: 0.9rem 1rem;
     margin-left: 3rem;
     margin-right: 1rem;
     border-radius: 0.5rem;
@@ -45,11 +45,12 @@
     color: white;
     border: none;
     font-family: "Overpass", sans-serif;
-    font-weight: 1000;
+    font-weight: 550;
+    font-size: 1.3rem;
     cursor: pointer;
 
     @media only screen and (max-width: 950px) {
-      padding: 1rem;
+      font-size: 1.4rem;
     }
 
     &:hover {

@@ -7,6 +7,7 @@ const tagStyle = {
   fontSize: "1.1rem",
   letterSpacing: "0px",
   padding: "1rem 0.6rem",
+  margin: "0 .5rem",
   color: "black",
   fontWeight: "900",
   lineHeight: "1rem",
