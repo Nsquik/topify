@@ -1,16 +1,8 @@
 import React from "react";
 
-const SVG = ({
-  style = {},
-  fill = "red",
-  width = "100%",
-  className = "header__searchbar-icon",
-  viewBox = "0 0 40 26"
-}) => (
+const SVG = ({ style = {}, fill = "red", className, viewBox = "0 0 40 26" }) => (
   <svg
-    width={width}
     style={style}
-    height={width}
     viewBox={viewBox}
     xmlns="http://www.w3.org/2000/svg"
     className={`svg-icon ${className || ""}`}

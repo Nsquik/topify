@@ -1,0 +1,28 @@
+.content {
+  &__wrapper {
+    background-image: linear-gradient(to top, #2e2e48 15%, rgba(161, 158, 240, 0.75)),
+      url(../../../images/content_bg.jpg);
+
+    background-size: cover;
+    background-position: center;
+    // background-position-x: 0%;
+    // background-position-y: 0%;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-origin: padding-box;
+    background-clip: border-box;
+
+    padding-bottom: 10rem;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    width: 100%;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+    grid-gap: 6rem;
+  }
+}

@@ -1,0 +1,40 @@
+.side-nav {
+  color: white;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+
+  &__item {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box; /* Opera/IE 8+ */
+
+    background-color: #474664;
+    border-radius: 0.5rem;
+    box-sizing: content-box;
+    // padding-bottom: 1rem;
+
+    &--active {
+      background-color: #2f2f48;
+      border: 2px solid #a19ef0;
+    }
+
+    &:hover {
+      background-color: #3f3e58;
+    }
+  }
+  &__link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+      margin-left: 2rem;
+    }
+  }
+
+  &__icon {
+    // background-color: red;
+    margin-right: -1.5rem;
+  }
+}

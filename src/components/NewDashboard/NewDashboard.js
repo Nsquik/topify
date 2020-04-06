@@ -1,10 +1,9 @@
 import React from "react";
-import Header from "./Header/HeaderContainer";
 
 import "./NewDashboard.scss";
 
-const NewDashboard = () => {
-  return <Header />;
+const NewDashboard = (props) => {
+  return <>{props.children}</>;
 };
 
 export default NewDashboard;

@@ -1,0 +1,24 @@
+.sidebar {
+  height: 100%;
+  width: 36.5rem;
+  background-color: var(--color-navbar);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.legal {
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+
+  &__item--wrapper {
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+}

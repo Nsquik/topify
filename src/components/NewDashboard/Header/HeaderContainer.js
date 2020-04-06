@@ -19,7 +19,7 @@ const HeaderContainer = () => {
           },
         });
 
-        setData({ email: response.data.email, status: response.data.product });
+        setData({ email: response.data.display_name, status: response.data.product });
       } catch (err) {
         Cookies.remove("token");
       }

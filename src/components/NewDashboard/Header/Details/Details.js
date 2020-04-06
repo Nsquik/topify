@@ -13,9 +13,9 @@ const Details = ({ data }) => {
         <div className="header__userinfo-email">{data.email}</div>
         <div className="header__userinfo-status header__userinfo-status--premium">{data.status}</div>
       </div>
-      <div className="header__logout" onClick={() => Cookies.remove("token")}>
+      <button className="header__logout" onClick={() => Cookies.remove("token")}>
         Log Out
-      </div>
+      </button>
     </div>
   );
 };

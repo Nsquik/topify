@@ -2,8 +2,9 @@ import React from "react";
 import { Router, Switch, Route, Redirect } from "react-router-dom";
 
 import { TokenContext } from "../context/TokenContext";
+
 import Login from "./Login/LoginContainer";
-import Dashboard from "./NewDashboard/NewDashboard";
+import Dashboard from "./NewDashboard/NewDashboardContainer";
 
 import { ProtectedLogin } from "../routes/ProtectedLogin";
 import { ProtectedComponent } from "../routes/ProtectedComponent";
@@ -27,21 +28,6 @@ const App = () => {
         </Router>
       </div>
     </TokenContext>
-  );
-};
-
-const Hello = () => {
-  // const mycontext = useContext(context);
-  // const cookie = useCheckTokenCookie();
-
-  // useEffect(() => {
-  //   mycontext.setToken(cookie);
-  // }, [cookie]);
-
-  return (
-    <div>
-      <button>Hello</button>
-    </div>
   );
 };
 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import useTopArtistsAndTracks from "../../hooks/useTopArtistsAndTracks";
 import Dashboard from "./Dashboard";
-
 import Navbar from "./Navbar";
 import Content from "./Content";
 import Timerange from "./Timerange";
@@ -11,7 +10,7 @@ const DashboardContainer = () => {
   const [type, setType] = useState("artists");
 
   const data = useTopArtistsAndTracks(type, timerange);
-  console.log(data);
+  console.log(state);
 
   return (
     <Dashboard>
