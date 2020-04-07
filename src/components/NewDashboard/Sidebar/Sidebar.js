@@ -27,14 +27,14 @@ const Navbar = (props) => {
         </div>
 
         <div className="side-nav__item--wrapper">
-          <Item name="Music Player" iconName="topartists" iconClass="side-nav__icon" type="underwork">
+          <Item name="Music Player" iconName="musicplayer" iconClass="side-nav__icon" type="underwork">
             <Premium />
             <UnderWork />
           </Item>
         </div>
 
         <div className="side-nav__item--wrapper">
-          <Item name="Playlist Creator" iconName="topartists" iconClass="side-nav__icon" type="underwork">
+          <Item name="Playlist Creator" iconName="playlistcreator" iconClass="side-nav__icon" type="underwork">
             <UnderWork />
           </Item>
         </div>
