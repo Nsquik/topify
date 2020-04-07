@@ -20,3 +20,17 @@ as well as working as a spotify player.
 - Implement searchbar
 
 - Refactor login page
+
+## Stack
+
+- React
+
+- React Context API ( wanted to learn. my first encounter)
+
+- React Hooks API ( same, first encounter)
+
+- React Router
+
+- Axios
+
+- Js-cookie
