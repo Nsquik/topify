@@ -8,6 +8,7 @@ const useTopArtistsAndTracks = (type, time_range) => {
     data: null,
     loading: true,
   });
+
   const TokenContext = useContext(context);
 
   useEffect(() => {
@@ -22,7 +23,7 @@ const useTopArtistsAndTracks = (type, time_range) => {
           }
         );
 
-        setData({ data: response.data, loading: false });
+        setData(response.data);
       } catch (err) {
         console.error(err);
         Cookies.remove("token");

@@ -13,6 +13,5 @@ export default () => {
       clearInterval(interval);
     };
   });
-  console.log(cookie);
   return cookie;
 };

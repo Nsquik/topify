@@ -1,23 +1,18 @@
 import React, { useReducer } from "react";
-import useTopArtistsAndTracks from "../hooks/useTopArtistsAndTracks";
-
 const Context = React.createContext(null);
 
 const initialState = {
+  data: null,
   timeperiod: "medium_term",
   type: "tracks",
 };
 
 const reducer = (state, action) => {
   const { type, payload } = action;
-  console.log(payload);
 
   switch (type) {
-    // case "SET_SPOTIFY_DATA":
-    //   return {
-    //     ...state,
-    //     tracks: payload,
-    //   };
+    case "FETCH_SPOTIFY_DATA":
+      return { ...state, data: payload };
     case "SET_TIMEPERIOD":
       return { ...state, timeperiod: payload };
     case "SET_TYPE": {
@@ -31,9 +26,7 @@ const reducer = (state, action) => {
 export const SpotifyDataContext = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const spotifyData = useTopArtistsAndTracks(state.type, state.timeperiod);
-
-  return <Context.Provider value={{ state, dispatch, spotifyData }}>{props.children}</Context.Provider>;
+  return <Context.Provider value={{ state, dispatch }}>{props.children}</Context.Provider>;
 };
 
 export default Context;

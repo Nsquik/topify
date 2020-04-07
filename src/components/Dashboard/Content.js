@@ -1,8 +1,31 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import img from "../../images/siemka.jpg";
 import img2 from "../../images/unknown.jpg";
+import axios from "axios";
+import TokenContext from "../../context/TokenContext";
 
-const Content = () => {
+const Content = (props) => {
+  const [state, setState] = useState(null);
+  const { token } = useContext(TokenContext);
+
+  const getData = async () => {
+    const response = await axios.get(
+      `https://api.spotify.com/v1/me/top/${props.type}?limit=50&offset=0&time_range=${props.timeperiod}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    setState(response.data);
+  };
+
+  useEffect(() => {
+    getData();
+  }, [props.type]);
+
+  console.log(state);
+
   return (
     <div className="content">
       <div className="content__row">

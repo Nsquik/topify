@@ -6,4 +6,19 @@
 .svg-icon {
   width: 4rem;
   height: 4rem;
+
+  &__star {
+    width: 2rem;
+    height: 2rem;
+    transform: scale(2.5);
+    // padding: 1rem 2rem;
+    margin-left: 0.5rem;
+  }
+
+  &__spotify {
+    width: 1rem;
+    height: 1.1rem;
+    padding-left: 0.1rem;
+    transform: scale(5);
+  }
 }

@@ -9,13 +9,12 @@ const DashboardContainer = () => {
   const [timerange, setTimerange] = useState("short_term");
   const [type, setType] = useState("artists");
 
-  const data = useTopArtistsAndTracks(type, timerange);
-  console.log(state);
+  // const data = useTopArtistsAndTracks(type, timerange);
 
   return (
     <Dashboard>
       <Navbar type={type} setType={setType} />
-      {data.loading === true ? "SPINNER" : <Content items={data} />}
+      <Content type={type} timeperiod={timerange} key={type} />
       <Timerange timerange={timerange} setTimerange={setTimerange} />
     </Dashboard>
   );

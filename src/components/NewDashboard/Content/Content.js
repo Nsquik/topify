@@ -1,162 +1,49 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import "./Content.scss";
-import SpotifyDataContext from "../../../context/SpotifyDataContext";
+import useTopTracksAndArtists from "../../../hooks/useTopArtistsAndTracks";
 
-// import ContentItems from "./";
+import ContentList from "./ContentList/ContentList";
+import ContentItem from "./ContentItem/ContentItem";
 
-const Content = () => {
-  const { spotifyData, state } = useContext(SpotifyDataContext);
+import ItemDetails from "./ItemDetails/ItemDetails";
+import ItemImg from "./ItemImg/ItemImg";
 
-  console.log(spotifyData);
+const Content = ({ type, timeperiod }) => {
+  const spotifyData = useTopTracksAndArtists(type, timeperiod);
+  const renderContent = () => {
+    if (spotifyData.data !== null) {
+      return spotifyData.items.map((item, index) => {
+        return (
+          <ContentItem key={item.id}>
+            <ItemImg imgUrl={type === "tracks" ? item.album.images : item.images} index={index + 1}></ItemImg>
+
+            <ItemDetails
+              redirect={item.external_urls.spotify}
+              artist={type === "tracks" ? item.artists[0].name : ""}
+              title={item.name}
+              popularity={item.popularity}
+              index={index + 1}
+            />
+          </ContentItem>
+        );
+      });
+    } else {
+      return <Loader />;
+    }
+  };
 
   return (
-    <div className="content__wrapper">
-      <div className="content__list">
-        <div className="item">
-          <div className="item__img">
-            <figure></figure>
-            <img
-              className="item__img--img"
-              src="https://i.scdn.co/image/b2a2eab1ac3520b9b9bdbabdec7e4dbed07872bc"
-              alt="siema"
-            />
-            <div className="item__index">
-              <div className="item__index-number">1</div>
-            </div>
-          </div>
-          <div className="item__details">
-            <div className="item__spotify-link">X</div>
-            <div className="item__artist">schafter</div>
-            <div className="item__title">double d's</div>
-            <div className="item__popularity">POPULARITY: X X X</div>
-          </div>
-        </div>
+    <>
+      <ContentList>{renderContent()}</ContentList>
+    </>
+  );
+};
 
-        <div className="item">
-          <div className="item__img">
-            <figure></figure>
-            <img
-              className="item__img--img"
-              src="https://i.scdn.co/image/b2a2eab1ac3520b9b9bdbabdec7e4dbed07872bc"
-              alt="siema"
-            />
-            <div className="item__index">1</div>
-          </div>
-          <div className="item__details">
-            <div className="item__spotify-link">X</div>
-            <div className="item__artist">Triple One</div>
-            <div className="item__title">Triple Lakes</div>
-            <div className="item__popularity">X X X</div>
-          </div>
-        </div>
-
-        <div className="item">
-          <div className="item__img">
-            <figure></figure>
-            <img
-              className="item__img--img"
-              src="https://i.scdn.co/image/b2a2eab1ac3520b9b9bdbabdec7e4dbed07872bc"
-              alt="siema"
-            />
-            <div className="item__index">1</div>
-          </div>
-          <div className="item__details">
-            <div className="item__spotify-link">X</div>
-            <div className="item__artist">Triple One</div>
-            <div className="item__title">Triple Lakes</div>
-            <div className="item__popularity">X X X</div>
-          </div>
-        </div>
-
-        <div className="item">
-          <div className="item__img">
-            <figure></figure>
-            <img
-              className="item__img--img"
-              src="https://i.scdn.co/image/b2a2eab1ac3520b9b9bdbabdec7e4dbed07872bc"
-              alt="siema"
-            />
-            <div className="item__index">1</div>
-          </div>
-          <div className="item__details">
-            <div className="item__spotify-link">X</div>
-            <div className="item__artist">Triple One</div>
-            <div className="item__title">Triple Lakes</div>
-            <div className="item__popularity">X X X</div>
-          </div>
-        </div>
-
-        <div className="item">
-          <div className="item__img">
-            <figure></figure>
-            <img
-              className="item__img--img"
-              src="https://i.scdn.co/image/b2a2eab1ac3520b9b9bdbabdec7e4dbed07872bc"
-              alt="siema"
-            />
-            <div className="item__index">1</div>
-          </div>
-          <div className="item__details">
-            <div className="item__spotify-link">X</div>
-            <div className="item__artist">Triple One</div>
-            <div className="item__title">Triple Lakes</div>
-            <div className="item__popularity">X X X</div>
-          </div>
-        </div>
-
-        <div className="item">
-          <div className="item__img">
-            <figure></figure>
-            <img
-              className="item__img--img"
-              src="https://i.scdn.co/image/b2a2eab1ac3520b9b9bdbabdec7e4dbed07872bc"
-              alt="siema"
-            />
-            <div className="item__index">1</div>
-          </div>
-          <div className="item__details">
-            <div className="item__spotify-link">X</div>
-            <div className="item__artist">Triple One</div>
-            <div className="item__title">Triple Lakes</div>
-            <div className="item__popularity">X X X</div>
-          </div>
-        </div>
-
-        <div className="item">
-          <div className="item__img">
-            <figure></figure>
-            <img
-              className="item__img--img"
-              src="https://i.scdn.co/image/b2a2eab1ac3520b9b9bdbabdec7e4dbed07872bc"
-              alt="siema"
-            />
-            <div className="item__index">1</div>
-          </div>
-          <div className="item__details">
-            <div className="item__spotify-link">X</div>
-            <div className="item__artist">Triple One</div>
-            <div className="item__title">Triple Lakes</div>
-            <div className="item__popularity">X X X</div>
-          </div>
-        </div>
-
-        <div className="item">
-          <div className="item__img">
-            <figure></figure>
-            <img
-              className="item__img--img"
-              src="https://i.scdn.co/image/b2a2eab1ac3520b9b9bdbabdec7e4dbed07872bc"
-              alt="siema"
-            />
-            <div className="item__index">1</div>
-          </div>
-          <div className="item__details">
-            <div className="item__spotify-link">X</div>
-            <div className="item__artist">Triple One</div>
-            <div className="item__title">Triple Lakes</div>
-            <div className="item__popularity">X X X</div>
-          </div>
-        </div>
+const Loader = () => {
+  return (
+    <div className="loader__wrapper">
+      <div className="loader">
+        <div className="loader__text">LOADING...</div>
       </div>
     </div>
   );

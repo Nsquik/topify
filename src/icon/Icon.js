@@ -3,6 +3,8 @@ import Search from "./Search";
 import User from "./User";
 import TopTracks from "./TopTracks";
 import TopArtists from "./TopArtists";
+import Star from "./Star";
+import Spotify from "./Spotify";
 
 const Icon = (props) => {
   switch (props.name) {
@@ -14,6 +16,10 @@ const Icon = (props) => {
       return <TopTracks {...props} />;
     case "topartists":
       return <TopArtists {...props} />;
+    case "star":
+      return <Star {...props} />;
+    case "spotify":
+      return <Spotify {...props} />;
     default:
       return;
   }

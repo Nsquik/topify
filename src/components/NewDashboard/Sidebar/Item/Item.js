@@ -10,13 +10,15 @@ const Item = (props) => {
     <div className={`side-nav__item ${state.type === props.type ? "side-nav__item--active" : ""}`}>
       <div className={`side-nav__link `}>
         <span>{props.name}</span>
-        {props.children}
-        <Icon
-          name={props.iconName}
-          className={props.iconClass}
-          fill={state.type === props.type ? "#A19EF0" : "white"}
-          class=""
-        />
+        <div className="details">
+          {props.children}
+          <Icon
+            name={props.iconName}
+            className={props.iconClass}
+            fill={state.type === props.type ? "#A19EF0" : "white"}
+            class=""
+          />
+        </div>
       </div>
     </div>
   );

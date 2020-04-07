@@ -29,7 +29,8 @@
     justify-content: space-between;
     align-items: center;
     span {
-      width: 10.5rem;
+      width: 11.2rem;
+      flex-grow: 1;
       padding: 1rem;
     }
   }
@@ -38,7 +39,7 @@
     height: 6rem;
     width: 6rem;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     // background-color: red;
     // margin-right: -1rem;
     margin-left: 1.5rem;
