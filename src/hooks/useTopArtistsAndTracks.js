@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 
 const useTopArtistsAndTracks = (type, time_range) => {
   const [data, setData] = useState({
-    data: null,
+    spotifyData: null,
     loading: true,
   });
 
@@ -14,6 +14,7 @@ const useTopArtistsAndTracks = (type, time_range) => {
   useEffect(() => {
     const getData = async () => {
       try {
+        setData({ spotifyData: null, loading: true });
         const response = await Axios.get(
           `https://api.spotify.com/v1/me/top/${type}?limit=50&offset=0&time_range=${time_range}`,
           {
@@ -23,7 +24,7 @@ const useTopArtistsAndTracks = (type, time_range) => {
           }
         );
 
-        setData(response.data);
+        setData({ spotifyData: response.data, loading: false });
       } catch (err) {
         console.error(err);
         Cookies.remove("token");

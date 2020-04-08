@@ -2,6 +2,8 @@ import React from "react";
 import "./Content.scss";
 import useTopTracksAndArtists from "../../../hooks/useTopArtistsAndTracks";
 
+import Loader from "../Loader/Loader";
+
 import ContentList from "./ContentList/ContentList";
 import ContentItem from "./ContentItem/ContentItem";
 
@@ -9,9 +11,10 @@ import ItemDetails from "./ItemDetails/ItemDetails";
 import ItemImg from "./ItemImg/ItemImg";
 
 const Content = ({ type, timeperiod }) => {
-  const spotifyData = useTopTracksAndArtists(type, timeperiod);
+  const { spotifyData } = useTopTracksAndArtists(type, timeperiod);
+
   const renderContent = () => {
-    if (spotifyData.data !== null) {
+    if (spotifyData !== null) {
       return spotifyData.items.map((item, index) => {
         return (
           <ContentItem key={item.id}>
@@ -36,16 +39,6 @@ const Content = ({ type, timeperiod }) => {
     <>
       <ContentList>{renderContent()}</ContentList>
     </>
-  );
-};
-
-const Loader = () => {
-  return (
-    <div className="loader__wrapper">
-      <div className="loader">
-        <div className="loader__text">LOADING...</div>
-      </div>
-    </div>
   );
 };
 

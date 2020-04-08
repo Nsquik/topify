@@ -1,0 +1,23 @@
+.content {
+  &__wrapper {
+    background-image: linear-gradient(to top, #2e2e48 15%, rgba(161, 158, 240, 0.75)),
+      url(../../../../images/content_bg.jpg);
+
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    // background-position-x: 0%;
+    // background-position-y: 0%;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-origin: padding-box;
+    background-clip: border-box;
+
+    padding-bottom: 10rem;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    width: 100%;
+  }
+}

@@ -1,6 +1,6 @@
 README IN PROCESS OF BUILDING.
 
-## Topify
+# Topify
 
 Website that let's you check yours top spotify ARTISTS and TRACKS.
 

@@ -5,6 +5,7 @@ const initialState = {
   data: null,
   timeperiod: "medium_term",
   type: "tracks",
+  loading: false,
 };
 
 const reducer = (state, action) => {
@@ -13,6 +14,8 @@ const reducer = (state, action) => {
   switch (type) {
     case "FETCH_SPOTIFY_DATA":
       return { ...state, data: payload };
+    case "SET_LOADING":
+      return { ...state, loading: payload };
     case "SET_TIMEPERIOD":
       return { ...state, timeperiod: payload };
     case "SET_TYPE": {
