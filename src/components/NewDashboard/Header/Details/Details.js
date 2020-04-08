@@ -11,7 +11,11 @@ const Details = ({ data }) => {
           <Icon name="user" width="4rem" height="4rem" fill="#fff" />
         </div>
         <div className="header__userinfo-email">{data.email}</div>
-        <div className="header__userinfo-status header__userinfo-status--premium">{data.status}</div>
+        <div
+          className={`header__userinfo-status ${data.status === "premium" ? "header__userinfo-status--premium" : null}`}
+        >
+          {data.status}
+        </div>
       </div>
       <button className="header__logout" onClick={() => Cookies.remove("token")}>
         Log Out

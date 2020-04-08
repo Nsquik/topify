@@ -1,10 +1,15 @@
 import React from "react";
 import "./Logo.scss";
+import LogoIcon from "../../../../images/logo.png";
 
 const Logo = () => {
   return (
     <div className="header__logo">
-      <div className="header__logo-icon">LOGO</div>
+      <div className="header__logo-icon">
+        <a href="/">
+          <img src={LogoIcon} alt="" srcset="" />
+        </a>
+      </div>
       <div className="header__logo-text">Discover Some Music</div>
     </div>
   );

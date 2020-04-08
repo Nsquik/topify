@@ -37,6 +37,7 @@ const Content = ({ type, timeperiod }) => {
 
   return (
     <>
+      <div className="content__title">TOP {type === "tracks" ? "TRACKS" : "ARTISTS"}</div>
       <ContentList>{renderContent()}</ContentList>
     </>
   );
