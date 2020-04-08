@@ -15,7 +15,6 @@ import useWindowSize from "../../hooks/useWindowSize";
 const DashboardContainer = () => {
   const { state } = useContext(SpotifyDataContext);
   const windowWidth = useWindowSize();
-  console.log(windowWidth.width);
 
   return (
     <Dashboard>
@@ -26,6 +25,7 @@ const DashboardContainer = () => {
         <ContentWrapper>
           <TimerangeBar></TimerangeBar>
           {windowWidth.width < 900 ? <MobileSidebar /> : null}
+
           {/* This KEY seems like a hack. However i didn't manage to find another way.*/}
           <Content type={state.type} timeperiod={state.timeperiod} key={state.type} />
         </ContentWrapper>
