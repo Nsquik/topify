@@ -30,7 +30,9 @@ const LoginContainer = (props) => {
     TokenContext.setToken(hash.access_token);
     hash = {};
   }
-  window.history.replaceState({}, document.title, "/");
+  if (error) {
+    window.history.replaceState({}, document.title, "/login");
+  }
 
   return <Login error={error} />;
 };

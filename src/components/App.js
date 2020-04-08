@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 import { TokenContext } from "../context/TokenContext";
 import { SpotifyDataContext } from "../context/SpotifyDataContext";
@@ -9,7 +9,6 @@ import Dashboard from "./NewDashboard/NewDashboardContainer";
 
 import { ProtectedLogin } from "../routes/ProtectedLogin";
 import { ProtectedComponent } from "../routes/ProtectedComponent";
-import history from "../history";
 
 import "./App.scss";
 
@@ -18,7 +17,7 @@ const App = () => {
     <TokenContext>
       <SpotifyDataContext>
         <div className="app">
-          <Router history={history}>
+          <Router>
             <Switch>
               <ProtectedComponent exact path="/" component={Dashboard} />
               <ProtectedLogin path="/login" component={Login} />
