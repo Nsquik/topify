@@ -11,13 +11,10 @@
 
 .login {
   @import url("https://fonts.googleapis.com/css?family=Baloo+2:400,500|Lato:300,400|Montserrat:400,500&display=swap");
-  //   background-image: linear-gradient(to bottom right, #62026d, #0424d9), url("../../images/loginbg.jpg");
-  // background-image: url("../../images/bg8.png");
-  // backdrop-filter: blur(10px);
-  // -webkit-backdrop-filter: blur(10px);
+  background-image: url("../../images/bg8mobile.png");
   background-position: center;
   background-size: cover;
-  background-repeat: no-repeat;
+  // background-repeat: no-repeat;
   width: 100%;
   height: 100%;
   clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 0% 100%);
@@ -30,7 +27,6 @@
   @media only screen and (max-width: 450px) {
     clip-path: none;
   }
-  // margin: 3.5rem;
 
   &__logo {
     display: flex;

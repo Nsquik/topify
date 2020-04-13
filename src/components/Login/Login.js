@@ -5,10 +5,10 @@ import desktopImage from "../../images/bg8small.png";
 import mobileImage from "../../images/bg8mobile.png";
 
 const Login = (props) => {
-  const imageUrl = window.innerWidth >= 650 ? desktopImage : mobileImage;
+  // const imageUrl = window.innerWidth >= 650 ? desktopImage : mobileImage;
   return (
     <div className="wrapper">
-      <div className="login" style={{ backgroundImage: `url(${imageUrl})` }}>
+      <div className="login">
         <div className="login__logo">
           <div className="login__logo-sub">DISCOVER YOUR TOP TRACKS AND ARTISTS ON SPOTIFY</div>
           <div className="login__logo-main">topify</div>

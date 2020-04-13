@@ -4,7 +4,7 @@ import "./ContentWrapper.scss";
 const ContentWrapper = (props) => {
   return (
     <div className="content__wrapper" id="content__wrapper">
-      {props.children}
+      <div className="safaribug__wrapper">{props.children}</div>
     </div>
   );
 };
