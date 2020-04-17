@@ -25,6 +25,7 @@ const useTopArtistsAndTracks = (type, time_range) => {
         );
 
         setData({ spotifyData: response.data, loading: false });
+        return () => response && response.abort();
       } catch (err) {
         console.error(err);
         Cookies.remove("token");

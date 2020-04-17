@@ -91,4 +91,8 @@
     opacity: 1;
     visibility: visible;
   }
+
+  &__checkbox:checked ~ .content__list__wrapper {
+    filter: blur(4px);
+  }
 }
