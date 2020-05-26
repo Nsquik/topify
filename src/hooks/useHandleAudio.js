@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState, createContext, useContext, useCallback } from "react";
+import React, { useLayoutEffect, useState, createContext, useContext, useCallback, useRef } from "react";
 
 const context = createContext(null);
 
@@ -16,7 +16,9 @@ const useHandleAudio = (audioRef, item_name) => {
 
   const [audio, setAudio] = useState(null);
   const [playing, setPlaying] = useState(false);
-
+  const [currentTime, setCurrentTime] = useState(0);
+  const [currentPercentTime, setCurrentPercentTime] = useState(0);
+  const duration = useRef(null);
   const getLatestAudio = useCallback(() => {
     return audioContext?.latestAudio;
   }, [audioContext]);
@@ -38,6 +40,16 @@ const useHandleAudio = (audioRef, item_name) => {
     setPlaying((playing) => false);
   }, [setPlaying]);
 
+  const handleTimeChange = useCallback(() => {
+    const percent = (currentTime / duration.current) * 100;
+    setCurrentPercentTime(percent);
+    setCurrentTime(audio?.currentTime);
+  }, [setCurrentTime, audio, duration, setCurrentPercentTime, currentTime]);
+
+  const handleDurChange = useCallback(() => {
+    duration.current = audioRef.current.duration;
+  }, [audioRef]);
+
   //////////////EVENT HANDLERS/////////////////////
 
   useLayoutEffect(() => {
@@ -46,20 +58,24 @@ const useHandleAudio = (audioRef, item_name) => {
       setAudio(element);
 
       //////////////EVENT HANDLERS/////////////////////
+      element.addEventListener("durationchange", handleDurChange);
       element.addEventListener("play", handlePlayEvent);
       element.addEventListener("pause", handlePauseEvent);
       element.addEventListener("ended", handleReload);
+      element.addEventListener("timeupdate", handleTimeChange);
       //////////////EVENT HANDLERS/////////////////////
     }
 
     return () => {
       if (element) {
-        element.addEventListener("play", handlePlayEvent);
-        element.addEventListener("pause", handlePauseEvent);
+        element.removeEventListener("play", handlePlayEvent);
+        element.removeEventListener("pause", handlePauseEvent);
         element.removeEventListener("ended", handleReload);
+        element.removeEventListener("timeupdate", handleTimeChange);
+        element.removeEventListener("durationchange", handleDurChange);
       }
     };
-  }, [setAudio, audioRef, audio, handleReload, handlePauseEvent, handlePlayEvent]);
+  }, [setAudio, audioRef, audio, handleReload, handlePauseEvent, handlePlayEvent, handleTimeChange, handleDurChange]);
 
   const toggleAudio = async () => {
     if (audio.paused) {
@@ -86,6 +102,7 @@ const useHandleAudio = (audioRef, item_name) => {
     ...otherProps,
   });
   // console.log(`${item_name} is playing: ${playing}`);
+  console.log(`curr%: ${currentTime}`);
 
   return { getTogglerProps, toggleAudio, pauseLatestAudio, playing };
 };

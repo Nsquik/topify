@@ -43,8 +43,10 @@ const Content = ({ type, timeperiod, item_name }) => {
 
   return (
     <>
-      <div className="content__title">TOP {type === "tracks" ? "TRACKS" : "ARTISTS"}</div>
-      <ContentList>{renderContent()}</ContentList>
+      <AudioContext>
+        <div className="content__title">TOP {type === "tracks" ? "TRACKS" : "ARTISTS"}</div>
+        <ContentList>{renderContent()}</ContentList>
+      </AudioContext>
     </>
   );
 };
