@@ -11,7 +11,7 @@ import ItemDetails from "./ItemDetails/ItemDetails";
 import ItemImg from "./ItemImg/ItemImg";
 import { AudioContext } from "../../../hooks/useHandleAudio";
 
-const Content = ({ type, timeperiod }) => {
+const Content = ({ type, timeperiod, item_name }) => {
   const { spotifyData } = useTopTracksAndArtists(type, timeperiod);
 
   const renderContent = () => {
@@ -43,10 +43,8 @@ const Content = ({ type, timeperiod }) => {
 
   return (
     <>
-      <AudioContext>
-        <div className="content__title">TOP {type === "tracks" ? "TRACKS" : "ARTISTS"}</div>
-        <ContentList>{renderContent()}</ContentList>
-      </AudioContext>
+      <div className="content__title">TOP {type === "tracks" ? "TRACKS" : "ARTISTS"}</div>
+      <ContentList>{renderContent()}</ContentList>
     </>
   );
 };
