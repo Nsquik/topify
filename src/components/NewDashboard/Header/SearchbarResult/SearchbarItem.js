@@ -1,6 +1,4 @@
 import React from "react";
-import Searchbar from "../Searchbar/Searchbar";
-import Icon from "../../../../icon/Icon";
 
 import "./SearchbarItem.scss";
 
@@ -14,7 +12,7 @@ const SearchbarItem = ({ data }) => {
         </a>
       </div>
       <div className="searchbar__details">
-        <a href={item.external_urls.spotify}>
+        <a href={item.external_urls.spotify} target="blank_">
           <div className="searchbar__name">
             {item.artists.map((artist, i) => {
               return `${artist.name}${item.artists[i + 1] ? ", " : ""}`;
@@ -25,10 +23,6 @@ const SearchbarItem = ({ data }) => {
       </div>
     </>
   );
-};
-
-const Spinner = () => {
-  return <div className="spinner">Loading...</div>;
 };
 
 export default SearchbarItem;

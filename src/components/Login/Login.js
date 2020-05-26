@@ -1,11 +1,8 @@
 import React from "react";
 import Authorization from "../../apis/Authorization";
 import "./Login.scss";
-import desktopImage from "../../images/bg8small.png";
-import mobileImage from "../../images/bg8mobile.png";
 
 const Login = (props) => {
-  // const imageUrl = window.innerWidth >= 650 ? desktopImage : mobileImage;
   return (
     <div className="wrapper">
       <div className="login">

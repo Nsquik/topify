@@ -1,4 +1,12 @@
 .item {
+  &__audio {
+    height: 3.5rem;
+    width: 50%;
+    position: absolute;
+    bottom: 50%;
+    right: 0;
+  }
+
   &__img {
     // height: 27rem;
     &--img {

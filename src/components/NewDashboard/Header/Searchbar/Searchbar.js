@@ -10,7 +10,6 @@ import SearchBar from "@opuscapita/react-searchbar";
 
 const Searchbar = () => {
   const [query, setQuery] = useState(null);
-  console.log(query);
 
   return (
     <div className="searchbar">
