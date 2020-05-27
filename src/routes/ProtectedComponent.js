@@ -9,15 +9,13 @@ export const ProtectedComponent = ({ component: Component, ...rest }) => {
   const cookie = useCheckTokenCookie();
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     TokenContext.setToken(cookie);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cookie]);
+  }, [cookie, TokenContext]);
 
   return (
     <Route
       {...rest}
-      render={(props) => (TokenContext.token ? <Component {...props} /> : <Redirect to={{ pathname: "/login" }} />)}
+      render={(props) => (cookie ? <Component {...props} /> : <Redirect to={{ pathname: "/login" }} />)}
     />
   );
 };

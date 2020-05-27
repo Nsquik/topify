@@ -5,7 +5,7 @@ import useHandleAudio from "../../../../hooks/useHandleAudio";
 const ItemImg = ({ index, imgUrl, preview_audio, setCurrentAudio, item_name }) => {
   const audioRef = useRef();
 
-  const { getTogglerProps, playing } = useHandleAudio(audioRef, item_name);
+  const { getTogglerProps, currentPercentTime, pauseLatestAudio } = useHandleAudio(audioRef, item_name);
 
   const setCurr = () => {
     console.log("Witam.");
@@ -17,7 +17,8 @@ const ItemImg = ({ index, imgUrl, preview_audio, setCurrentAudio, item_name }) =
         {preview_audio && (
           <>
             <button {...getTogglerProps({ onClick: setCurr })}>TOGGLE</button>
-            <button>{playing ? "PLAYING" : "NOT"}</button>
+            <button>{currentPercentTime}</button>
+            <button onClick={() => pauseLatestAudio()}>CHANGE</button>
             <audio ref={audioRef} className="item__audio" src={preview_audio}>
               {" "}
             </audio>

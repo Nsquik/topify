@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Login from "./Login";
 import Cookies from "js-cookie";
 import context from "../../context/TokenContext";
@@ -25,11 +25,14 @@ const error = urlParams.get("error");
 const LoginContainer = (props) => {
   const TokenContext = useContext(context);
 
-  if (hash.access_token) {
-    Cookies.set("token", hash.access_token, { expires: 1 / 48 });
-    TokenContext.setToken(hash.access_token);
-    hash = {};
-  }
+  useEffect(() => {
+    if (hash.access_token) {
+      Cookies.set("token", hash.access_token, { expires: 1 / 48 });
+      TokenContext.setToken(hash.access_token);
+      hash = {};
+    }
+  }, [TokenContext]);
+
   if (error) {
     window.history.replaceState({}, document.title, "/login");
   }

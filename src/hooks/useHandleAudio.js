@@ -18,6 +18,7 @@ const useHandleAudio = (audioRef, item_name) => {
   const [playing, setPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [currentPercentTime, setCurrentPercentTime] = useState(0);
+  const [volume, setVolume] = useState(0);
   const duration = useRef(null);
   const getLatestAudio = useCallback(() => {
     return audioContext?.latestAudio;
@@ -29,7 +30,8 @@ const useHandleAudio = (audioRef, item_name) => {
 
   //////////////EVENT HANDLERS/////////////////////
   const handleReload = useCallback(() => {
-    audio.currentTime = 0;
+    audio.load();
+    setCurrentTime(0);
   }, [audio]);
 
   const handlePlayEvent = useCallback(() => {
@@ -50,12 +52,16 @@ const useHandleAudio = (audioRef, item_name) => {
     duration.current = audioRef.current.duration;
   }, [audioRef]);
 
+  const handleVolumeChange = useCallback(() => {
+    setVolume(audio?.volume);
+  }, [setVolume, audio]);
   //////////////EVENT HANDLERS/////////////////////
 
   useLayoutEffect(() => {
-    const element = audioRef.current;
+    const element = audioRef?.current;
     if (element) {
       setAudio(element);
+      setVolume(element.volume);
 
       //////////////EVENT HANDLERS/////////////////////
       element.addEventListener("durationchange", handleDurChange);
@@ -63,6 +69,7 @@ const useHandleAudio = (audioRef, item_name) => {
       element.addEventListener("pause", handlePauseEvent);
       element.addEventListener("ended", handleReload);
       element.addEventListener("timeupdate", handleTimeChange);
+      element.addEventListener("volumechange", handleVolumeChange);
       //////////////EVENT HANDLERS/////////////////////
     }
 
@@ -73,24 +80,34 @@ const useHandleAudio = (audioRef, item_name) => {
         element.removeEventListener("ended", handleReload);
         element.removeEventListener("timeupdate", handleTimeChange);
         element.removeEventListener("durationchange", handleDurChange);
+        element.removeEventListener("volumechange", handleVolumeChange);
       }
     };
-  }, [setAudio, audioRef, audio, handleReload, handlePauseEvent, handlePlayEvent, handleTimeChange, handleDurChange]);
+  }, [
+    setAudio,
+    audioRef,
+    audio,
+    handleReload,
+    handlePauseEvent,
+    handlePlayEvent,
+    handleTimeChange,
+    handleDurChange,
+    handleVolumeChange,
+  ]);
 
   const toggleAudio = async () => {
-    if (audio.paused) {
+    if (audio?.paused) {
       await audio.play();
       setLatestAudio(audio);
     } else {
       setLatestAudio(null);
-      audio.pause();
+      if (audio) {
+        audio.pause();
+      }
     }
   };
 
   const pauseLatestAudio = () => {
-    // if (latestAudio && latestAudio !== audio) {
-    //   latestAudio.pause();
-    // }
     if (getLatestAudio() && getLatestAudio() !== audio) {
       getLatestAudio().pause();
     }
@@ -101,10 +118,27 @@ const useHandleAudio = (audioRef, item_name) => {
     // isPlaying: playing,
     ...otherProps,
   });
-  // console.log(`${item_name} is playing: ${playing}`);
-  console.log(`curr%: ${currentTime}`);
 
-  return { getTogglerProps, toggleAudio, pauseLatestAudio, playing };
+  const getTrackProgressProps = ({ ...otherProps }) => ({
+    currentTime,
+    currentTimePercentage: currentPercentTime,
+    ...otherProps,
+  });
+
+  const getVolumeProps = ({ ...otherProps }) => ({
+    volume,
+    ...otherProps,
+  });
+
+  return {
+    getTogglerProps,
+    getTrackProgressProps,
+    toggleAudio,
+    pauseLatestAudio,
+    playing,
+    currentPercentTime,
+    getVolumeProps,
+  };
 };
 
 export default useHandleAudio;
