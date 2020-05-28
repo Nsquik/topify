@@ -7,6 +7,8 @@ import Star from "./Star";
 import Spotify from "./Spotify";
 import MusicPlayer from "./MusicPlayer";
 import PlaylistCreator from "./PlaylistCreator";
+import Pause from "./Pause";
+import Play from "./Play";
 
 const Icon = (props) => {
   switch (props.name) {
@@ -26,6 +28,10 @@ const Icon = (props) => {
       return <MusicPlayer {...props} />;
     case "playlistcreator":
       return <PlaylistCreator {...props} />;
+    case "pause":
+      return <Pause {...props} />;
+    case "play":
+      return <Play {...props} />;
     default:
       return;
   }

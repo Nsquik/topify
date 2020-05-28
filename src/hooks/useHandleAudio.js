@@ -113,8 +113,16 @@ const useHandleAudio = (audioRef, item_name) => {
     }
   };
 
-  const getTogglerProps = ({ onClick, ...otherProps }) => ({
-    onClick: callFnsInSequence(toggleAudio, pauseLatestAudio),
+  const changeVolume = useCallback(
+    (value) => {
+      audio.volume = value;
+    },
+    [audio]
+  );
+
+  ////////////////// PROP GETTERS //////////////////////
+  const getTogglerProps = ({ onClick, ...otherProps } = {}) => ({
+    onClick: callFnsInSequence(toggleAudio, pauseLatestAudio, onClick),
     // isPlaying: playing,
     ...otherProps,
   });
@@ -129,6 +137,7 @@ const useHandleAudio = (audioRef, item_name) => {
     volume,
     ...otherProps,
   });
+  ////////////////// PROP GETTERS //////////////////////
 
   return {
     getTogglerProps,
@@ -138,6 +147,10 @@ const useHandleAudio = (audioRef, item_name) => {
     playing,
     currentPercentTime,
     getVolumeProps,
+    changeVolume,
+    volume,
+    currentTime,
+    duration: duration.current,
   };
 };
 
