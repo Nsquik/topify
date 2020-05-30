@@ -6,7 +6,7 @@ const Logo = () => {
   return (
     <div className="header__logo">
       <div className="header__logo-icon">
-        <a href="/">
+        <a href="/" aria-label="Navigate to homepage" name="Navigate to homepage">
           <img src={LogoIcon} alt="" />
         </a>
       </div>

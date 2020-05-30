@@ -11,7 +11,7 @@ const callFnsInSequence = (...fns) => (...args) => {
   fns.forEach((fn) => fn && fn(...args));
 };
 
-const useHandleAudio = (audioRef, item_name) => {
+const useHandleAudio = (audioRef) => {
   const audioContext = useContext(context);
 
   const [audio, setAudio] = useState(null);
@@ -19,6 +19,7 @@ const useHandleAudio = (audioRef, item_name) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [currentPercentTime, setCurrentPercentTime] = useState(0);
   const [volume, setVolume] = useState(0);
+  const [readyState, setReadyState] = useState(0);
   const duration = useRef(null);
   const getLatestAudio = useCallback(() => {
     return audioContext?.latestAudio;
@@ -55,6 +56,20 @@ const useHandleAudio = (audioRef, item_name) => {
   const handleVolumeChange = useCallback(() => {
     setVolume(audio?.volume);
   }, [setVolume, audio]);
+
+  const handleLoadedMeta = useCallback(() => {
+    setReadyState(audio?.readyState);
+  }, [setReadyState, audio]);
+
+  const handleLoadedFrame = useCallback(() => {
+    setReadyState(audio?.readyState);
+  }, [setReadyState, audio]);
+
+  const handleLoadingError = useCallback(() => {
+    console.log("Loading error");
+    return audio.load?.();
+  }, [audio]);
+
   //////////////EVENT HANDLERS/////////////////////
 
   useLayoutEffect(() => {
@@ -62,6 +77,7 @@ const useHandleAudio = (audioRef, item_name) => {
     if (element) {
       setAudio(element);
       setVolume(element.volume);
+      setReadyState(element.readyState);
 
       //////////////EVENT HANDLERS/////////////////////
       element.addEventListener("durationchange", handleDurChange);
@@ -70,6 +86,9 @@ const useHandleAudio = (audioRef, item_name) => {
       element.addEventListener("ended", handleReload);
       element.addEventListener("timeupdate", handleTimeChange);
       element.addEventListener("volumechange", handleVolumeChange);
+      element.addEventListener("loadedmetadata", handleLoadedMeta);
+      element.addEventListener("error", handleLoadingError);
+      element.addEventListener("loadeddata", handleLoadedFrame);
       //////////////EVENT HANDLERS/////////////////////
     }
 
@@ -81,6 +100,9 @@ const useHandleAudio = (audioRef, item_name) => {
         element.removeEventListener("timeupdate", handleTimeChange);
         element.removeEventListener("durationchange", handleDurChange);
         element.removeEventListener("volumechange", handleVolumeChange);
+        element.removeEventListener("loadedmetadata", handleLoadedMeta);
+        element.removeEventListener("error", handleLoadingError);
+        element.removeEventListener("loadeddata", handleLoadedFrame);
       }
     };
   }, [
@@ -93,12 +115,18 @@ const useHandleAudio = (audioRef, item_name) => {
     handleTimeChange,
     handleDurChange,
     handleVolumeChange,
+    handleLoadedMeta,
+    handleLoadingError,
+    handleLoadedFrame,
   ]);
 
   const toggleAudio = async () => {
     if (audio?.paused) {
-      await audio.play();
-      setLatestAudio(audio);
+      try {
+        setLatestAudio(audio);
+
+        await audio.play();
+      } catch (err) {}
     } else {
       setLatestAudio(null);
       if (audio) {
@@ -109,7 +137,11 @@ const useHandleAudio = (audioRef, item_name) => {
 
   const pauseLatestAudio = () => {
     if (getLatestAudio() && getLatestAudio() !== audio) {
-      getLatestAudio().pause();
+      try {
+        getLatestAudio().pause();
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
@@ -151,6 +183,7 @@ const useHandleAudio = (audioRef, item_name) => {
     volume,
     currentTime,
     duration: duration.current,
+    readyState,
   };
 };
 

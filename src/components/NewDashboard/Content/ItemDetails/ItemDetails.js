@@ -12,7 +12,13 @@ const ItemDetails = (props) => {
 
   return (
     <div className="item__details">
-      <a href={props.redirect} target="_blank" rel="noopener noreferrer">
+      <a
+        href={props.redirect}
+        target="_blank"
+        rel="noopener noreferrer"
+        name="navigate to spotify"
+        aria-label="navigate to spotify"
+      >
         <div className="item__spotify-link">
           <Icon name="spotify" />
         </div>

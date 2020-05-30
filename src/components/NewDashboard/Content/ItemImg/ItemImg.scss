@@ -1,73 +1,4 @@
-@keyframes audioPlay {
-  from {
-    height: 5px;
-  }
-  50% {
-    height: 80%;
-  }
-  to {
-    height: 5px;
-  }
-}
-
-.animation__container {
-  display: flex;
-  height: 100%;
-}
-
 .item {
-  &__audio {
-    height: 3.5rem;
-    position: absolute;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    align-content: center;
-    border-radius: 1rem 0 0 1rem;
-    bottom: 3rem;
-    right: 0;
-    padding: 0.8rem;
-    width: 10rem;
-    // background-color: var(--color-secondary);
-    background-color: rgba($color: #2f2e49, $alpha: 0.85);
-
-    &--icon {
-      margin-right: -2rem;
-    }
-
-    &-indicator {
-      margin: 0.1rem;
-      margin-bottom: 2px;
-      align-self: flex-end;
-      background-color: white;
-      height: 5px;
-      width: 0.3rem;
-      animation-name: audioPlay;
-      animation-duration: 1000ms;
-      animation-timing-function: cubic-bezier(0.17, 0.67, 0.83, 0.67);
-      animation-iteration-count: infinite;
-
-      &-delay100 {
-        animation-delay: 100ms;
-      }
-
-      &-delay250 {
-        animation-delay: 250ms;
-      }
-      &-delay400 {
-        animation-delay: 700ms;
-      }
-    }
-
-    &--icon {
-      height: 100%;
-    }
-
-    &-timer {
-      margin-top: 3px;
-    }
-  }
-
   &__cont {
     position: relative;
   }
@@ -118,4 +49,8 @@
       }
     }
   }
+}
+
+.audioloader {
+  margin-top: 0.5rem;
 }

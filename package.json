@@ -44,10 +44,6 @@
   },
   "devDependencies": {
     "@opuscapita/react-searchbar": "^2.1.1",
-    "formik": "^2.1.4",
-    "gh-pages": "^2.2.0",
-    "react-burger-menu": "^2.6.13",
-    "react-swipeable": "^5.5.1",
     "yup": "^0.28.3"
   }
 }
