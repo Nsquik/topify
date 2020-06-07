@@ -5,20 +5,22 @@ import "./ItemAudio.scss";
 
 const ItemAudio = ({ preview_audio }) => {
   const audioRef = useRef();
-  const { getTogglerProps, currentTime, playing } = useHandleAudio(audioRef);
+  const { getTogglerProps, ...getTrackProgressProps } = useHandleAudio(audioRef);
+  const { playing, currentTime } = getTrackProgressProps;
   const setCurr = () => {};
 
   return (
-    <button
-      className="item__audio"
-      {...getTogglerProps({ onClick: setCurr })}
-      name="play audio button"
-      aria-label="play audio button"
-    >
-      <div className="svg-icon item__audio--icon">
-        <Icon name={`${playing ? "pause" : "play"}`} className="audio__pause" />
-      </div>
-
+    <div className="item__audio-container">
+      <button
+        className="item__audio"
+        {...getTogglerProps({ onClick: setCurr })}
+        name="play audio button"
+        aria-label="play audio button"
+      >
+        <div className="svg-icon item__audio--icon">
+          <Icon name={`${playing ? "pause" : "play"}`} className="audio__pause" />
+        </div>
+      </button>
       <div className="item__audio-timer">{playing ? Math.round(currentTime * 100) / 100 + ' "' : null}</div>
       {playing ? (
         <div className="animation__container">
@@ -28,7 +30,7 @@ const ItemAudio = ({ preview_audio }) => {
         </div>
       ) : null}
       <audio ref={audioRef} src={preview_audio} preload="none"></audio>
-    </button>
+    </div>
   );
 };
 

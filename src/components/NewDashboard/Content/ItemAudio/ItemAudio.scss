@@ -1,22 +1,28 @@
+.item__audio-container {
+  display: flex;
+  font-family: "Overpass";
+  font-size: 1rem;
+  color: white;
+  border: none;
+  height: 3.5rem;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  border-radius: 1rem 0 0 1rem;
+  bottom: 3rem;
+  right: 0;
+  padding: 0.8rem;
+  width: 10rem;
+  background-color: rgba($color: #2f2e49, $alpha: 0.85);
+}
+
 .item {
   &__audio {
-    font-family: "Overpass";
-    font-size: 1rem;
-    color: white;
+    background: none;
+    height: 120%;
     border: none;
-    height: 3.5rem;
-    position: absolute;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    align-content: center;
-    border-radius: 1rem 0 0 1rem;
-    bottom: 3rem;
-    right: 0;
-    padding: 0.8rem;
-    width: 10rem;
-    // background-color: var(--color-secondary);
-    background-color: rgba($color: #2f2e49, $alpha: 0.85);
 
     &--icon {
       margin-left: -0.8rem;
@@ -51,6 +57,7 @@
     }
 
     &-timer {
+      font-family: "Overpass", sans-serif;
       margin-top: 3px;
     }
   }

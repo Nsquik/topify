@@ -162,6 +162,7 @@ const useHandleAudio = (audioRef) => {
   const getTrackProgressProps = ({ ...otherProps }) => ({
     currentTime,
     currentTimePercentage: currentPercentTime,
+    playing: playing,
     ...otherProps,
   });
 
