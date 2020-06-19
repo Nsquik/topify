@@ -1,5 +1,7 @@
 README IN PROCESS OF BUILDING.
 
+![alt text](https://imgur.com/a/kgJ5i0u)
+
 # Topify
 
 Website that let's you check yours top spotify ARTISTS and TRACKS.
