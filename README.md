@@ -1,3 +1,4 @@
+## DEMO: https://topify.netlify.app/
 # <img src="https://imgur.com/eneyPVz.png">
 # <img src="https://imgur.com/p3vLCFf.png">
 # Topify
@@ -5,7 +6,6 @@
 Website that let's you check yours top spotify ARTISTS and TRACKS.
 
 
-## DEMO: https://topify.netlify.app/
 
 
 
